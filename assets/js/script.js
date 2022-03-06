@@ -1,15 +1,47 @@
-var btn = document.querySelector('#start-quiz-btn');
+const btn = document.querySelector('#start-quiz-btn');
+const quizContainer = document.getElementById('questions');
+const resultsContainer = document.getElementById('results');
 
 function timer() {
-  var sec = 60;
+  var sec = 10;
   var timer = setInterval(function() {
     document.getElementById('timerDisplay').innerHTML='00:'+sec;
     sec--;
-    if (sec < 0) {
+    if (sec === 0) {
       clearInterval(timer);
       alert("You are out of time!");
     }
-  }, 100);
+  }, 1000);
+}
+
+//  THIS SECTION IM NOT SURE IF ITS RIGHT 
+// function buildQuiz() {
+//   const output = [];
+
+//   questions.forEach(
+//     (currentQuestion, questionNumber) => {
+//       const answers = [];
+
+//       for(letter in currentQuestion.answers){
+//         answers.push(
+//           `<label>
+//           <input type="button" name="questions${questionNumber}" value="${letter}">
+//           ${letter} :
+//           ${currentQuestion.answers[letter]}
+//         </label>`
+//         );
+//       }
+//     output.push(
+//      `<div class="questions"> ${currentQuestion.question} </div>
+//       <div class="answers"> ${answers.join("")} </div>`
+//     );
+//     }
+//   );
+//   quizContainer.innerHTML = output.join('');
+// }
+
+function showResults() {
+
 }
 
 let questions = [

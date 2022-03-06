@@ -9,22 +9,31 @@
     </head>
 
     <body>
+        <!-- timer  -->
         <div id="timer">
             <h2>Time Left</h2>
-            <p id="timerDisplay">00:10</p>
+            <p id="timerDisplay">00:00</p>
         </div>
+        <!-- welcome/instructions for quiz  -->
         <div id="welcome">
-            <h2>Hey there!</h2>
-            <p>Welcome to the JavaScript coding quiz challenge!</p>
-        </div>
-        <div>
+            <header>
+                <h2>Hey there!</h2>
+                <p>Welcome to the JavaScript coding quiz challenge!</p>
+            </header>
+            <br/>
             <p>
                 Try to answer the following code-related questions within the time limit. 
+                <br/>
                 Keep in mind that incorrect answers will penalize your score and time by ten seconds!
             </p>
-        </div>
-        <div>
+            <!-- start quiz button -->
             <button id="start-quiz-btn" class="btn start-btn">Start Quiz</button>
+        </div>
+        <div id="questions">
+            
+        </div>
+        <div id="results">
+            
         </div>
 
         <script src="./assets/js/script.js"></script>
