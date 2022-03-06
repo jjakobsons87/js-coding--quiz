@@ -7,8 +7,9 @@ function timer() {
     sec--;
     if (sec < 0) {
       clearInterval(timer);
+      alert("You are out of time!");
     }
-  }, 1000);
+  }, 100);
 }
 
 let questions = [
