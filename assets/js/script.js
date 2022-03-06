@@ -2,6 +2,7 @@ const btn = document.querySelector('#start-quiz-btn');
 const quizContainer = document.getElementById('questions');
 const resultsContainer = document.getElementById('results');
 
+
 function timer() {
   var sec = 10;
   var timer = setInterval(function() {
