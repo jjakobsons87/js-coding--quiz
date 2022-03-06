@@ -1,4 +1,6 @@
-const btn = document.querySelector('#start-quiz-btn');
+const start_btn = document.querySelector('#start-quiz-btn');
+const infoBox = document.querySelector('#welcome');
+const quizBox = document.querySelector('#quizBox')
 const quizContainer = document.getElementById('questions');
 const resultsContainer = document.getElementById('results');
 
@@ -102,4 +104,18 @@ let questions = [
 // };
 
 // start the quiz
-btn.addEventListener("click",timer);
+start_btn.addEventListener("click",timer);
+
+
+
+
+// have an option to view high scores 
+// click start quiz
+// hide info box and header
+// show first question/answers and start timer 
+// if correct answer is clicked, display correct, then go to next question
+// if wrong answer is clicked, display incorrect, then go to next question 
+// if timer runs out before all questions are answered, end quiz
+// if all questions are answered, hide quiz element and show results element 
+// show score and give option to add initials for high score
+// 
