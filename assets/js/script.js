@@ -1,3 +1,16 @@
+var btn = document.querySelector('#start-quiz-btn');
+
+function timer() {
+  var sec = 60;
+  var timer = setInterval(function() {
+    document.getElementById('timerDisplay').innerHTML='00:'+sec;
+    sec--;
+    if (sec < 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+
 let questions = [
   { question: "Commonly used data types do NOT include:",
     answers: {
@@ -49,3 +62,10 @@ let questions = [
     correctAnswer: "c"
   },
 ];
+
+// function showQuestions() {
+
+// };
+
+// start the quiz
+btn.addEventListener("click",timer);
