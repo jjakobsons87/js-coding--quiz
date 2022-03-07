@@ -5,8 +5,9 @@ const timerEl = document.getElementById('timer');
 const quizContainer = document.getElementById('question');
 const resultsContainer = document.getElementById('results');
 const answerEl = document.getElementById('answers');
-let score = 0;
-let sec = 10;
+const timeLeftEl = document.getElementById('timeLeft');
+let scoreTotal = JSON.parse(localStorage.getItem("user")) || [];
+let sec = 20;
 let time =  null;
 let currentQuestionIndex = 0;
 
@@ -107,17 +108,38 @@ function nextQuestion() {
   }
 }
 
+// when the game ends, prompt user to enter initals to save in local storage with score 
 function gameOver () {
-  prompt("Nice Job! Your score is " + sec + ". Enter your initials to save your score!");
-  score = sec;
-  localStorage.setItem("score", score);
+  nameInitials = prompt("Nice Job! Your score is " + sec + ". Enter your initials to save your score!");
+  var user = {
+    userName: nameInitials,
+    scoreTotal: sec,
+  };
+  scoreTotal.push(user);
+  localStorage.setItem("user", JSON.stringify(scoreTotal));
+  return goAgain();
 }
 
+function goAgain() {
+  clearInterval(time);
+  infoBox.style.display = "block";
+  quizBox.style.display = "none";
+  timeLeftEl.style.display = "none";
+  timerEl.style.display = "none";
+}
+
+// on page load hide the timer/time left display 
+onload = function() {
+  timeLeftEl.style.display = "none";
+  timerEl.style.display = "none";
+}
 // start the quiz
 start_btn.onclick = function() {
   startTimer ();
   infoBox.style.display = "none";
   quizBox.style.display = "block";
+  timerEl.style.display = "block";
+  timeLeftEl.style.display = "block";
   quizContainer.textContent = questions[currentQuestionIndex].question;
   answers.textContent = "";
   displayAnswers();
