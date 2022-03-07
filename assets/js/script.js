@@ -3,45 +3,22 @@ const infoBox = document.querySelector('#welcome');
 const quizBox = document.querySelector('#quizBox')
 const quizContainer = document.getElementById('questions');
 const resultsContainer = document.getElementById('results');
-
+const a = document.getElementById("option1")
+const b = document.getElementById("option2");
+const c = document.getElementById("option3");
+const d = document.getElementById("option4");
 
 function timer() {
-  var sec = 10;
+  var sec = 12;
   var timer = setInterval(function() {
-    document.getElementById('timerDisplay').innerHTML='00:'+sec;
+    document.getElementById('timerDisplay').innerHTML=sec;
     sec--;
-    if (sec === 0) {
+    if (sec == 0) {
       clearInterval(timer);
       alert("You are out of time!");
     }
   }, 1000);
 }
-
-//  THIS SECTION IM NOT SURE IF ITS RIGHT 
-// function buildQuiz() {
-//   const output = [];
-
-//   questions.forEach(
-//     (currentQuestion, questionNumber) => {
-//       const answers = [];
-
-//       for(letter in currentQuestion.answers){
-//         answers.push(
-//           `<label>
-//           <input type="button" name="questions${questionNumber}" value="${letter}">
-//           ${letter} :
-//           ${currentQuestion.answers[letter]}
-//         </label>`
-//         );
-//       }
-//     output.push(
-//      `<div class="questions"> ${currentQuestion.question} </div>
-//       <div class="answers"> ${answers.join("")} </div>`
-//     );
-//     }
-//   );
-//   quizContainer.innerHTML = output.join('');
-// }
 
 function showResults() {
 
@@ -98,6 +75,16 @@ let questions = [
     correctAnswer: "c"
   },
 ];
+
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+
+function renderQuestion() {
+  let q = questions[runningQuestion];
+
+  question.innerHTML = "<p>"+ q.question + "</p>";
+
+}
 
 // function showQuestions() {
 
