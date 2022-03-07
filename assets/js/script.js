@@ -71,6 +71,7 @@ function timer() {
   if (sec == 0) {
     clearInterval(timer);
     alert("You are out of time!");
+    return goAgain();
   }
 };
 
