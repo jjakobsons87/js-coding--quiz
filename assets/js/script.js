@@ -3,10 +3,10 @@ const infoBox = document.querySelector('#welcome');
 const quizBox = document.querySelector('#quizBox')
 const quizContainer = document.getElementById('questions');
 const resultsContainer = document.getElementById('results');
-const a = document.getElementById("option1")
-const b = document.getElementById("option2");
-const c = document.getElementById("option3");
-const d = document.getElementById("option4");
+const choiceA = document.getElementById("option1")
+const choiceB = document.getElementById("option2");
+const choiceC = document.getElementById("option3");
+const choiceD = document.getElementById("option4");
 
 function timer() {
   var sec = 12;
@@ -27,52 +27,52 @@ function showResults() {
 let questions = [
   { question: "Commonly used data types do NOT include:",
     answers: {
-      a: "Strings",
-      b: "Booleans",
-      c: "Alerts",
-      d: "Numbers",
+      choiceA: "Strings",
+      choiceB: "Booleans",
+      choiceC: "Alerts",
+      choiceD: "Numbers",
     },
-    correctAnswer: "b",
+    correctAnswer: "choiceB",
   },
   {
     question: "The condition in an if / else statement is enclosed with _______:",
     answers: {
-      a: "Quotes",
+      choiceA: "Quotes",
       b: "Curly Brackets",
       c: "Parenthesis",
       d: "Square Brackets",
     },
-    correctAnswer: "c",
+    correctAnswer: "choiceC",
   },
   {
     question: "Arrays in JavaScript can be used to store ______.",
     answers: {
-      a: "Numbers and Strings",
-      b: "Other Arrays",
-      c: "Booleans",
-      d: "All of the above",
+      choiceA: "Numbers and Strings",
+      choiceB: "Other Arrays",
+      choiceC: "Booleans",
+      choiceD: "All of the above",
     },
-    correctAnswer: "d",
+    correctAnswer: "choiceD",
   },
   {
     question: "String values must be enclosed within _____ when being assigned to variables.",
     answers: {
-      a: "Commas",
-      b: "Curly Brackets",
-      c: "Quotes",
-      d: "Parenthesis",
+      choiceA: "Commas",
+      choiceB: "Curly Brackets",
+      choiceC: "Quotes",
+      choiceD: "Parenthesis",
     },
-    correctAnswer: "b"
+    correctAnswer: "choiceB"
   },
   {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answers: {
-      a: "JavaScript",
-      b: "Terminal/bash",
-      c: "For Loops",
-      d: "console.log",
+      choiceA: "JavaScript",
+      choiceB: "Terminal/bash",
+      choiceC: "For Loops",
+      choiceD: "console.log",
     },
-    correctAnswer: "c"
+    correctAnswer: "choiceC"
   },
 ];
 
