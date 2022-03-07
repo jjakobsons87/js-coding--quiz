@@ -1,29 +1,17 @@
-const start_btn = document.querySelector('#start-quiz-btn');
-const infoBox = document.querySelector('#welcome');
-const quizBox = document.querySelector('#quizBox')
+const start_btn = document.getElementById("start-quiz-btn");
+const infoBox = document.getElementById('infoBox');
+const quizBox = document.getElementById('quizBox')
 const quizContainer = document.getElementById('questions');
 const resultsContainer = document.getElementById('results');
-const choiceA = document.getElementById("option1")
-const choiceB = document.getElementById("option2");
-const choiceC = document.getElementById("option3");
-const choiceD = document.getElementById("option4");
+const choiceA = document.getElementById("choiceA")
+const choiceB = document.getElementById("choiceB");
+const choiceC = document.getElementById("choiceC");
+const choiceD = document.getElementById("choiceD");
+let score = 0;
+let sec = 90;
+let currentQuestionIndex = 0;
 
-function timer() {
-  var sec = 12;
-  var timer = setInterval(function() {
-    document.getElementById('timerDisplay').innerHTML=sec;
-    sec--;
-    if (sec == 0) {
-      clearInterval(timer);
-      alert("You are out of time!");
-    }
-  }, 1000);
-}
-
-function showResults() {
-
-}
-
+// creating questions 
 let questions = [
   { question: "Commonly used data types do NOT include:",
     answers: {
@@ -38,9 +26,9 @@ let questions = [
     question: "The condition in an if / else statement is enclosed with _______:",
     answers: {
       choiceA: "Quotes",
-      b: "Curly Brackets",
-      c: "Parenthesis",
-      d: "Square Brackets",
+      choiceB: "Curly Brackets",
+      choiceC: "Parenthesis",
+      choiceD: "Square Brackets",
     },
     correctAnswer: "choiceC",
   },
@@ -76,22 +64,64 @@ let questions = [
   },
 ];
 
-const lastQuestion = questions.length - 1;
-let runningQuestion = 0;
-
-function renderQuestion() {
-  let q = questions[runningQuestion];
-
-  question.innerHTML = "<p>"+ q.question + "</p>";
-
+// timer function 
+function timer() {
+  var sec = 10;
+  var timer = setInterval(function () {
+    document.getElementById("timerDisplay").innerHTML = sec;
+    sec--;
+    if (sec === 0) {
+      clearInterval(timer);
+      alert("You are out of time!");
+    }
+  }, 1000);
 }
 
-// function showQuestions() {
+var selectedAnswer = function() {
+  if (this.textContent == questions[currentQuestionIndex].correctAnswer) {
+    window.alert("That is correct!")
+  } else {
+    window.alert("Wrong Answer! On to the next question!")
+    count -= 10; 
+  }
+  nextQuestion();
+}
 
-// };
+function displayAnswers() {
+  answer.El.innerHTML = "";
+  for (let i=0; i < questions[currentQuestionIndex].answers.length; i++) {
+    var answerButton = document.createElement('button');
+    answerButton.onclick = selectedAnswer;
+    answerButton.textContent = questions[currentQuestionIndex].answers[i];
+    answersEl.appendChild(answerButton);
+  }
+}
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex >= questions.length) {
+    gameOver();
+  } else {
+    questionEl.textContent = questions[currentQuestionIndex].question;
+    displayAnswers;
+  }
+}
+
+function gameOver () {
+  prompt("Nice Job! Enter your initials to save your score!");
+  score = sec;
+  localStorage.setItem("score", score);
+}
 
 // start the quiz
-start_btn.addEventListener("click",timer);
+start_btn.addEventListener("click", timer);
+
+
+
+
+
+
+
 
 
 
