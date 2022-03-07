@@ -1,11 +1,13 @@
 const start_btn = document.getElementById("startQuizBtn");
 const infoBox = document.getElementById('infoBox');
-const quizBox = document.getElementById('quizBox')
+const quizBox = document.getElementById('quizBox');
+const timerEl = document.getElementById('timer');
 const quizContainer = document.getElementById('question');
 const resultsContainer = document.getElementById('results');
-const answers = document.getElementById('answers');
+const answerEl = document.getElementById('answers');
 let score = 0;
-let sec = 90;
+let sec = 10;
+let time =  null;
 let currentQuestionIndex = 0;
 
 // creating questions 
@@ -63,7 +65,7 @@ let questions = [
 
 // timer function 
 function timer() {
-  document.getElementById("timerDisplay").innerHTML = sec;
+  timerEl.innerHTML = sec;
   sec--;
   if (sec == 0) {
     clearInterval(timer);
@@ -86,12 +88,12 @@ function selectedAnswer() {
 }
 
 function displayAnswers() {
-  answers.innerHTML = "";
+  answerEl.innerHTML = "";
   for (let i=0; i < questions[currentQuestionIndex].answers.length; i++) {
     var answerButton = document.createElement('button');
     answerButton.onclick = selectedAnswer;
     answerButton.textContent = questions[currentQuestionIndex].answers[i];
-    answers.appendChild(answerButton);
+    answerEl.appendChild(answerButton);
   }
 }
 
@@ -101,12 +103,12 @@ function nextQuestion() {
     gameOver();
   } else {
     question.textContent = questions[currentQuestionIndex].question;
-    displayAnswers;
+    displayAnswers();
   }
 }
 
 function gameOver () {
-  prompt("Nice Job! Enter your initials to save your score!");
+  prompt("Nice Job! Your score is " + sec + ". Enter your initials to save your score!");
   score = sec;
   localStorage.setItem("score", score);
 }
