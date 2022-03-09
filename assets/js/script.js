@@ -8,7 +8,7 @@ const answerEl = document.getElementById('answers');
 const timeLeftEl = document.getElementById('timeLeft');
 let scoreTotal = JSON.parse(localStorage.getItem("user")) || [];
 let sec = 20;
-let time =  null;
+// let time =  0;
 let currentQuestionIndex = 0;
 
 // creating questions 
@@ -66,10 +66,11 @@ let questions = [
 
 // timer function 
 function timer() {
-  timerEl.innerHTML = sec;
   sec--;
-  if (sec == 0) {
-    clearInterval(timer);
+  timerEl.innerHTML = sec;
+  
+  if (sec === -1) {
+    clearInterval(sec);
     alert("You are out of time!");
     return goAgain();
   }
@@ -122,7 +123,7 @@ function gameOver () {
 }
 
 function goAgain() {
-  clearInterval(time);
+  clearInterval(sec);
   infoBox.style.display = "block";
   quizBox.style.display = "none";
   timeLeftEl.style.display = "none";
